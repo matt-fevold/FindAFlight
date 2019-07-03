@@ -23,9 +23,11 @@ def main():
     quotes = response.json()['Quotes']
     places = response.json()['Places']
 
-    # print(quotes[0])
     print(places)
-    cheap_flights = get_lower_than_price(quotes, 100)
+
+    write_destination_to_file(places)
+
+    cheap_flights = get_lower_than_price(quotes, 75)
 
     non_local_cheap_flights = remove_local_destinations(cheap_flights)
 
@@ -62,6 +64,12 @@ def remove_local_destinations(quotes):
         quotes.pop(i)
 
     return quotes
+
+
+def write_destination_to_file(destination):
+  with open("../resources/destinations.json", "w+") as file:
+    json.dump(destination, file)
+
 
 if __name__ == "__main__":
   main()
