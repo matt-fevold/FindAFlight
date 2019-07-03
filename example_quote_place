@@ -1,0 +1,5 @@
+{'QuoteId': 241, 'MinPrice': 48.0, 'Direct': True, 'OutboundLeg': {'CarrierIds': [833], 'OriginId': 68528, 'DestinationId': 74908, 'DepartureDate': '2019-11-29T00:00:00'}, 'QuoteDateTime': '2019-06-29T18:39:00'}
+
+
+
+{'PlaceId': 74908, 'IataCode': 'PHL', 'Name': 'Philadelphia International', 'Type': 'Station', 'SkyscannerCode': 'PHL', 'CityName': 'Philadelphia', 'CityId': 'PHLA', 'CountryName': 'United States'}

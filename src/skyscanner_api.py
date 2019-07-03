@@ -9,9 +9,9 @@ with open('../resources/config.json') as config_file:
     data = json.load(config_file)
 
 
-def get_quotes_and_places(airport, start_date="anytime", end_date="2019-12-31"):
+def get_quotes_and_places(airport, start_date="anytime"):
     # build search param and headers
-    search = airport + "/US/" + start_date + "?inboundpartialdate=" + end_date
+    search = airport + "/US/" + start_date
     header = {"X-RapidAPI-Host": data['API_HOST'], "X-RapidAPI-Key": secrets['API_KEY']}
 
     # make call
@@ -19,8 +19,8 @@ def get_quotes_and_places(airport, start_date="anytime", end_date="2019-12-31"):
 
     # validate response
     if response.status_code != 200:
-      print("RESPONSE CODE: ", response.status_code)
-      exit(1)
+        print("RESPONSE CODE: ", response.status_code)
+        exit(1)
 
     # parse response into readable format
     quotes = response.json()['Quotes']
