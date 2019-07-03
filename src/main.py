@@ -25,14 +25,15 @@ def main():
 
     # print(quotes[0])
     print(places)
-    cheap_flights = get_lowest_price(quotes, 130)
+    cheap_flights = get_lower_than_price(quotes, 100)
+
+    non_local_cheap_flights = remove_local_destinations(cheap_flights)
 
 
+    for flight in non_local_cheap_flights:
+      print(get_destination(places, flight['OutboundLeg']['DestinationId']))
 
-    for flight in cheap_flights:
-      print(get_destination(places, flight['OutboundLeg']['DestinationId'])['Name'])
-
-    print(len(cheap_flights))
+    # print(len(cheap_flights))
 
 
 def get_destination(destination_list, destination_id):
@@ -41,7 +42,7 @@ def get_destination(destination_list, destination_id):
             return destination
 
 
-def get_lowest_price(quotes, max_price):
+def get_lower_than_price(quotes, max_price):
     low_quotes = []
     for quote in quotes:
         quote_price = quote['MinPrice']
@@ -50,12 +51,17 @@ def get_lowest_price(quotes, max_price):
 
     return low_quotes
 
+
 def remove_local_destinations(quotes):
     # filter out places i'd never fly to
-    local_flights = []
-    # for quote in quotes:
-    #   if quote['']
-    pass
+    # 84790 - theif river falls
+    local_flights = ["84790"]
+
+    for i, quote in enumerate(quotes):
+      if str(quote['OutboundLeg']['DestinationId']) in local_flights:
+        quotes.pop(i)
+
+    return quotes
 
 if __name__ == "__main__":
   main()
