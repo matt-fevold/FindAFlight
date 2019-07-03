@@ -1,12 +1,9 @@
-import json
 from src.skyscanner_api import call_api
 
 def main():
     quotes, places = call_api()
 
-    print(places)
-
-    # write_destination_to_file(places)
+    # print(places)
 
     cheap_flights = get_lower_than_price(quotes, 75)
 
@@ -15,8 +12,6 @@ def main():
 
     for flight in non_local_cheap_flights:
       print(get_destination(places, flight['OutboundLeg']['DestinationId']))
-
-    # print(len(cheap_flights))
 
 
 def get_destination(destination_list, destination_id):
@@ -47,9 +42,6 @@ def remove_local_destinations(quotes):
     return quotes
 
 
-def write_destination_to_file(destination):
-    with open("../resources/destinations.json", "w+") as file:
-      json.dump(destination, file)
 
 
 if __name__ == "__main__":
