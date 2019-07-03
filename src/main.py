@@ -5,21 +5,24 @@ def main():
     first_leg = plan_leg("msp")
 
 
-
-
-
 def plan_leg(start_airport):
     quotes, places = get_quotes_and_places(start_airport)
 
     # print(places)
 
-    cheap_flights = get_lower_than_price(quotes, 75)
+    cheap_flights = get_lower_than_price(quotes, 55)
 
     non_local_cheap_flights = remove_local_destinations(cheap_flights)
 
     for flight in non_local_cheap_flights:
-        print(flight['MinPrice'], "    ", flight['OutboundLeg']['DepartureDate'][5:10], get_destination(flight['OutboundLeg']['DestinationId'])['Name'])
+        pretty_print(flight)
 
+
+
+def pretty_print(flight):
+  print(flight['MinPrice'], "    ",
+        flight['OutboundLeg']['DepartureDate'][5:10],
+        get_destination(flight['OutboundLeg']['DestinationId'])['Name'])
 
 
 def get_lower_than_price(quotes, max_price):
