@@ -1,4 +1,5 @@
 from src.skyscanner_api import get_quotes_and_places
+from src.get_destination import get_destination
 
 def main():
     quotes, places = get_quotes_and_places("msp")
@@ -9,15 +10,12 @@ def main():
 
     non_local_cheap_flights = remove_local_destinations(cheap_flights)
 
-
     for flight in non_local_cheap_flights:
-      print(get_destination(places, flight['OutboundLeg']['DestinationId']))
+        print(get_destination(flight['OutboundLeg']['DestinationId']))
 
 
-def get_destination(destination_list, destination_id):
-    for destination in destination_list:
-        if destination['PlaceId'] == destination_id:
-            return destination
+def plan_trip(start_airport):
+    pass
 
 
 def get_lower_than_price(quotes, max_price):
