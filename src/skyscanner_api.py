@@ -8,9 +8,9 @@ with open('../resources/secrets.json') as secrets:
 with open('../resources/config.json') as config_file:
     data = json.load(config_file)
 
-def call_api():
+def get_quotes_and_places(airport):
     # build search param and headers
-    search = "msp/US/anytime?inboundpartialdate=2019-12-01"
+    search = airport + "/US/anytime?inboundpartialdate=2019-12-01"
     header = {"X-RapidAPI-Host": data['API_HOST'], "X-RapidAPI-Key": secrets['API_KEY']}
 
     # make call

@@ -1,5 +1,5 @@
 import json
-from src.skyscanner_api import call_api
+from src.skyscanner_api import get_quotes_and_places
 
 def write_destination_to_file(destination):
     with open("../resources/destinations.json", "w+") as file:
@@ -7,6 +7,6 @@ def write_destination_to_file(destination):
 
 
 if __name__ == "__main__":
-    quotes, places = call_api()
+    quotes, places = get_quotes_and_places("msp")
 
     write_destination_to_file(places)

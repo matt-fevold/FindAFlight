@@ -1,7 +1,7 @@
-from src.skyscanner_api import call_api
+from src.skyscanner_api import get_quotes_and_places
 
 def main():
-    quotes, places = call_api()
+    quotes, places = get_quotes_and_places("msp")
 
     # print(places)
 
