@@ -1,5 +1,6 @@
 import requests
 import json
+from datetime import datetime, timedelta
 
 
 with open('../resources/secrets.json') as secrets:
@@ -11,7 +12,10 @@ with open('../resources/config.json') as config_file:
 
 def get_quotes_and_places(airport, start_date="anytime"):
     # build search param and headers
-    search = airport + "/US/" + start_date
+    if start_date == "anytime":
+        search = airport + "/US/" + start_date
+    else:
+        search = airport + "/US/" + start_date.strftime("%Y-%m-%d")
     header = {"X-RapidAPI-Host": data['API_HOST'], "X-RapidAPI-Key": secrets['API_KEY']}
 
     # make call

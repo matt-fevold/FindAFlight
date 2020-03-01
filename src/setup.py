@@ -1,12 +1,14 @@
-import json
-from src.skyscanner_api import get_quotes_and_places
+from setuptools import setup
 
-def write_destination_to_file(destination):
-    with open("../resources/destinations.json", "w+") as file:
-      json.dump(destination, file)
-
-
-if __name__ == "__main__":
-    quotes, places = get_quotes_and_places("msp")
-
-    write_destination_to_file(places)
+setup(
+    name='main',
+    version='0.1',
+    py_modules=['main'],
+    install_requires=[
+        'Click',
+    ],
+    entry_points='''
+        [console_scripts]
+        findaflight=main:main
+    ''',
+)

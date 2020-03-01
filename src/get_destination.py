@@ -8,4 +8,3 @@ def get_destination(destination_id):
     for destination in destination_list:
         if destination['PlaceId'] == destination_id:
             return destination
-
