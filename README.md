@@ -4,9 +4,12 @@
 
 - python3
 - setup venv
+        - https://stackoverflow.com/questions/23842713/using-python-3-in-virtualenv
 - requirements.txt has dependencies
 - change `secrets-template.json` to `secrets.json`
 - create a key on `https://rapidapi.com` and replace it
+        - sadly this requires a card attached to the account now, when i set up the project it didnt. 
+        - it also looks like the endpoints have changed as well, I may go back in and update, but not right now. This was a cool idea before the world fell apart </3
 
 
 ### what it does
