@@ -4,6 +4,7 @@
 
 - python3
 - setup venv
+        - https://stackoverflow.com/questions/23842713/using-python-3-in-virtualenv
 - requirements.txt has dependencies
 - change `secrets-template.json` to `secrets.json`
 - create a key on `https://rapidapi.com` and replace it
